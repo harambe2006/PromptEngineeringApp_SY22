@@ -20,7 +20,7 @@ namespace PromptEngineeringApp_SY22 { // ANVÄNDE KLASSERNA PÅ ETT OCH SAMMA CS
         /// <summary>
         /// Konstruktör för att initiera uppmaningstexten.
         /// </summary>
-        /// <param name="text">Inmatningstexten</param> //
+        /// <param name="text">Inmatningstexten</param> 
         public Prompt(string text) {
             _promptText = text;
         }
@@ -39,7 +39,7 @@ namespace PromptEngineeringApp_SY22 { // ANVÄNDE KLASSERNA PÅ ETT OCH SAMMA CS
         /// </summary>
         public virtual void ModifyPrompt() {
             // Standardbeteende kan utökas i härledda klasser
-            Console.WriteLine("No modification applied.");
+            Console.WriteLine("Ingen ändring tillämpad.");
         }
     }
 
@@ -57,7 +57,7 @@ namespace PromptEngineeringApp_SY22 { // ANVÄNDE KLASSERNA PÅ ETT OCH SAMMA CS
         /// Metod för att lägga till ett suffix till prompten.
         /// </summary>
         public override void ModifyPrompt() {
-            Console.WriteLine(GetPromptText() + " [Suffix Added]");
+            Console.WriteLine(GetPromptText() + " [Suffix har lagts till]");
         }
     }
 
@@ -75,7 +75,7 @@ namespace PromptEngineeringApp_SY22 { // ANVÄNDE KLASSERNA PÅ ETT OCH SAMMA CS
         /// Metod för att lägga till ett prefix till prompten.
         /// </summary>
         public override void ModifyPrompt() {
-            Console.WriteLine("[Prefix Added] " + GetPromptText());
+            Console.WriteLine("[Prefix har lagts till] " + GetPromptText());
         }
     }
 
@@ -92,23 +92,23 @@ namespace PromptEngineeringApp_SY22 { // ANVÄNDE KLASSERNA PÅ ETT OCH SAMMA CS
         /// Metod för att visa användargränssnittet och hantera den snabba konstruktionen.
         /// </summary>
         public void Run() {
-            Console.WriteLine("Welcome to the Simple Prompt Engineering App!");
-            Console.WriteLine("Type a prompt and hit Enter:");
+            Console.WriteLine("Välkommen till Simple Prompt Engineering-appen!");
+            Console.WriteLine("Skriv en prompt och tryck på Enter:");
 
             // Läs användarinmatning
             string userPrompt = Console.ReadLine();
 
             // Visa menyalternativ för snabb ändring
-            Console.WriteLine("\nSelect an option to modify the prompt:");
-            Console.WriteLine("1. Add a suffix");
-            Console.WriteLine("2. Add a prefix");
+            Console.WriteLine("\nVälj ett alternativ för att ändra prompten:");
+            Console.WriteLine("1. Lägg till ett suffix");
+            Console.WriteLine("2. Lägg till ett prefix");
             Console.WriteLine("3. Exit");
 
             // Läs användarens val
-            string choice = Console.ReadLine();
+            string myChoice = Console.ReadLine();
 
             // Bearbeta användarens val
-            switch (choice) {
+            switch (myChoice) {
                 case "1":
                     _prompt = new SuffixPrompt(userPrompt);
                     break;
@@ -116,10 +116,10 @@ namespace PromptEngineeringApp_SY22 { // ANVÄNDE KLASSERNA PÅ ETT OCH SAMMA CS
                     _prompt = new PrefixPrompt(userPrompt);
                     break;
                 case "3":
-                    Console.WriteLine("Exiting the app.");
+                    Console.WriteLine("Avslutar appen.");
                     return;
                 default:
-                    Console.WriteLine("Invalid option. Exiting the app.");
+                    Console.WriteLine("Ogiltigt alternativ. Avslutar appen.");
                     return;
             }
 

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
+
 
 namespace PromptEngineeringApp_SY22 { // ANVÄNDE KLASSERNA PÅ ETT OCH SAMMA CS FIL. 
 
@@ -11,6 +13,8 @@ namespace PromptEngineeringApp_SY22 { // ANVÄNDE KLASSERNA PÅ ETT OCH SAMMA CS
     /// <summary>
     /// Basklass för hantering av snabba operationer
     /// </summary>
+    /// 
+
     class Prompt {
         /// <summary>
         /// Fält för att lagra användarinmatningsuppmaningen.
@@ -51,13 +55,17 @@ namespace PromptEngineeringApp_SY22 { // ANVÄNDE KLASSERNA PÅ ETT OCH SAMMA CS
         /// Konstruktör för att initiera prompten med ett suffix.
         /// </summary>
         /// <param name="text">Inmatningstexten.</param>
-        public SuffixPrompt(string text) : base(text) { }
+        public SuffixPrompt(string text) : base(text) {
+            Console.WriteLine("Lägg till ett affix på ditt suffix");
+            string affixS = Console.ReadLine();
+            Console.WriteLine("[Suffix har lagts till] " + text + affixS);
+        }
 
         /// <summary>
         /// Metod för att lägga till ett suffix till prompten.
         /// </summary>
         public override void ModifyPrompt() {
-            Console.WriteLine(GetPromptText() + " [Suffix har lagts till]");
+            // Console.WriteLine(GetPromptText() + " [Suffix har lagts till]");
         }
     }
 
@@ -69,13 +77,17 @@ namespace PromptEngineeringApp_SY22 { // ANVÄNDE KLASSERNA PÅ ETT OCH SAMMA CS
         /// Konstruktör för att initiera prompten med ett prefix.
         /// </summary>
         /// <param name="text">The input prompt text.</param>
-        public PrefixPrompt(string text) : base(text) { }
+        public PrefixPrompt(string text) : base(text) {
+            Console.WriteLine("Lägg till ett affix på ditt prefix");
+            string affixP = Console.ReadLine();
+            Console.WriteLine("[Prefix har lagts till] " + affixP + text);
+        }
 
         /// <summary>
         /// Metod för att lägga till ett prefix till prompten.
         /// </summary>
         public override void ModifyPrompt() {
-            Console.WriteLine("[Prefix har lagts till] " + GetPromptText());
+            //Console.WriteLine("[Prefix har lagts till] " + GetPromptText());          
         }
     }
 
@@ -109,7 +121,7 @@ namespace PromptEngineeringApp_SY22 { // ANVÄNDE KLASSERNA PÅ ETT OCH SAMMA CS
 
             // Bearbeta användarens val
             switch (myChoice) {
-                case "1":
+                case "1":               
                     _prompt = new SuffixPrompt(userPrompt);
                     break;
                 case "2":
@@ -139,7 +151,6 @@ namespace PromptEngineeringApp_SY22 { // ANVÄNDE KLASSERNA PÅ ETT OCH SAMMA CS
             // Skapa en ny instans av UI-klassen och kör applikationen
             PromptUI promptUI = new PromptUI();
             promptUI.Run();
-
 
         }
     }
